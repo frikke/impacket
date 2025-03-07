@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 # Impacket - Collection of Python classes for working with network protocols.
 #
-# Copyright (C) 2023 Fortra. All rights reserved.
+# Copyright Fortra, LLC and its affiliated companies 
+#
+# All rights reserved.
 #
 # This software is provided under a slightly modified version
 # of the Apache Software License. See the accompanying LICENSE file
@@ -325,11 +327,11 @@ class USERENUM:
                     # Are we filtering users?
                     if self.__filterUsers is not None:
                         if userName in self.__filterUsers:
-                            print("%s: user %s logged from host %s - active: %d, idle: %d" % (
+                            logging.info("%s: user %s logged from host %s - active: %d, idle: %d" % (
                             target, userName, sourceIP, session['sesi10_time'], session['sesi10_idle_time']))
                             printCRLF = True
                     else:
-                        print("%s: user %s logged from host %s - active: %d, idle: %d" % (
+                        logging.info("%s: user %s logged from host %s - active: %d, idle: %d" % (
                         target, userName, sourceIP, session['sesi10_time'], session['sesi10_idle_time']))
                         printCRLF = True
 
@@ -341,10 +343,10 @@ class USERENUM:
                 # Are we filtering users?
                 if self.__filterUsers is not None:
                     if userName in self.__filterUsers:
-                        print("%s: user %s logged off from host %s" % (target, userName, sourceIP))
+                        logging.info("%s: user %s logged off from host %s" % (target, userName, sourceIP))
                         printCRLF=True
                 else:
-                    print("%s: user %s logged off from host %s" % (target, userName, sourceIP))
+                    logging.info("%s: user %s logged off from host %s" % (target, userName, sourceIP))
                     printCRLF=True
                 
         if printCRLF is True:
@@ -407,10 +409,10 @@ class USERENUM:
                 # Are we filtering users?
                 if self.__filterUsers is not None:
                     if userName in self.__filterUsers:
-                        print("%s: user %s\\%s logged in LOCALLY" % (target,logonDomain,userName))
+                        logging.info("%s: user %s\\%s logged in LOCALLY" % (target,logonDomain,userName))
                         printCRLF=True
                 else:
-                    print("%s: user %s\\%s logged in LOCALLY" % (target,logonDomain,userName))
+                    logging.info("%s: user %s\\%s logged in LOCALLY" % (target,logonDomain,userName))
                     printCRLF=True
 
         # Let's see who logged out since last check
@@ -421,10 +423,10 @@ class USERENUM:
                 # Are we filtering users?
                 if self.__filterUsers is not None:
                     if userName in self.__filterUsers:
-                        print("%s: user %s\\%s logged off LOCALLY" % (target,logonDomain,userName))
+                        logging.info("%s: user %s\\%s logged off LOCALLY" % (target,logonDomain,userName))
                         printCRLF=True
                 else:
-                    print("%s: user %s\\%s logged off LOCALLY" % (target,logonDomain,userName))
+                    logging.info("%s: user %s\\%s logged off LOCALLY" % (target,logonDomain,userName))
                     printCRLF=True
                 
         if printCRLF is True:
